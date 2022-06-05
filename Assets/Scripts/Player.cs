@@ -51,6 +51,7 @@ public class Player : Actor
         if (CurrentStrength >= enemy.Strength)
         {
             enemy.Explode();
+            CurrentStrength += enemy.Strength;
         }
         else
         {
