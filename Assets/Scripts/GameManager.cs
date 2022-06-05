@@ -25,7 +25,8 @@ public class GameManager : MonoBehaviour
             int towerHeight = Random.Range(minTowerHeight, maxTowerHeight);
             for (int j = 0; j < towerHeight; j++)
             {
-                Instantiate(roomPrefab, new Vector2(spawnX, spawnY), Quaternion.identity);
+                Room room = Instantiate(roomPrefab, new Vector2(spawnX, spawnY), Quaternion.identity);
+                room.StrengthMult = (int)((j + 1) * 1.5f);
                 spawnY += ROOM_HEIGHT;
             }
 

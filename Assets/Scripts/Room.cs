@@ -14,6 +14,8 @@ public class Room : MonoBehaviour
 
     private bool PlayerArrived { get => (Player.Instance.transform.position - playerPos.transform.position).sqrMagnitude < 0.1f; }
 
+    public int StrengthMult { get; set; }
+
     private Enemy enemy = null;
     private bool isHovered = false;
     private bool explored = false;
@@ -29,6 +31,7 @@ public class Room : MonoBehaviour
     {
         Enemy enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
         enemy = Instantiate(enemyPrefab, enemyPos.position, Quaternion.identity);
+        enemy.Strength = enemy.Strength * StrengthMult;
     }
 
     private void Update()

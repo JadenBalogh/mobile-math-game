@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Player : Actor
 {
     private static Player instance;
     public static Player Instance { get => instance; }
+
+    [SerializeField] private TextMeshProUGUI textbox;
 
     [SerializeField] private Transform startPos;
 
@@ -32,6 +35,7 @@ public class Player : Actor
 
         Target = startPos;
         CurrentStrength = startStrength;
+        textbox.text = CurrentStrength.ToString();
 
         base.Awake();
     }
@@ -51,7 +55,9 @@ public class Player : Actor
         if (CurrentStrength >= enemy.Strength)
         {
             enemy.Explode();
+            Destroy(enemy.gameObject);
             CurrentStrength += enemy.Strength;
+            textbox.text = CurrentStrength.ToString();
         }
         else
         {
