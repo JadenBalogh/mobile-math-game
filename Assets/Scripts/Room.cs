@@ -9,7 +9,10 @@ public class Room : MonoBehaviour
     [SerializeField] private Color hoverColor;
     [SerializeField] private Transform playerPos;
     [SerializeField] private Transform enemyPos;
-    [SerializeField] private Enemy enemyPrefab;
+    [SerializeField] private Enemy[] enemyPrefabs;
+    [SerializeField] private float combatDelay = 0.5f;
+
+    private bool PlayerArrived { get => (Player.Instance.transform.position - playerPos.transform.position).sqrMagnitude < 0.1f; }
 
     private Enemy enemy = null;
     private bool isHovered = false;
@@ -24,12 +27,19 @@ public class Room : MonoBehaviour
 
     private void Start()
     {
+        Enemy enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
         enemy = Instantiate(enemyPrefab, enemyPos.position, Quaternion.identity);
     }
 
     private void Update()
     {
         if (explored) return;
+
+        if (PlayerArrived && !explored)
+        {
+            StartCoroutine(DelayCombat());
+            explored = true;
+        }
 
         if (IsUsable())
         {
@@ -39,6 +49,12 @@ public class Room : MonoBehaviour
         {
             spriteRenderer.color = normalColor;
         }
+    }
+
+    private IEnumerator DelayCombat()
+    {
+        yield return new WaitForSeconds(combatDelay);
+        Player.Instance.Fight(enemy);
     }
 
     private void OnMouseEnter()

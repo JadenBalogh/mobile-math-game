@@ -314,6 +314,8 @@ GameObject:
   m_Component:
   - component: {fileID: 880365512}
   - component: {fileID: 880365511}
+  - component: {fileID: 880365514}
+  - component: {fileID: 880365513}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -382,12 +384,59 @@ Transform:
   m_GameObject: {fileID: 880365510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.07, y: -5.5, z: 0}
-  m_LocalScale: {x: 22.78, y: 6, z: 1}
+  m_LocalScale: {x: 43.3, y: 6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &880365513
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880365510}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!50 &880365514
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880365510}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1149096200
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,6 +566,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c90a50b82dd0a24abf85fe8395505d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bodyParts:
+  - {fileID: 269889169413350977, guid: b67761df83808f0489f5ece7989bcda4, type: 3}
+  - {fileID: 8394742961141120260, guid: 1e9d1665e64138f488b56cc397db88b0, type: 3}
+  - {fileID: 8516744648702663828, guid: c0e3c4ad54ddf7c409a1d605b2f7dc4b, type: 3}
+  - {fileID: 2541447396360838820, guid: ea38054818d5f7d44917c586779e7964, type: 3}
+  - {fileID: 5538167907755677539, guid: 083be87fde5a01148be2de83dd881e75, type: 3}
+  - {fileID: 5452453722726755967, guid: a197a6df48ce9d541b13f2f150fe0157, type: 3}
+  - {fileID: 1162867838429738142, guid: de7ad0f141dea0f47a536f5993fe33a5, type: 3}
+  minExplodeForce: 6
+  maxExplodeForce: 14
+  minExplodeTorque: 0.3
+  maxExplodeTorque: 0.5
   startPos: {fileID: 1149096201}
   maxInteractDist: 4
   moveTime: 0.5
+  startStrength: 1
