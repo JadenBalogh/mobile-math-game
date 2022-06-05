@@ -153,7 +153,8 @@ MonoBehaviour:
   hoverColor: {r: 0.5402647, g: 0.7169812, b: 0.22659309, a: 1}
   playerPos: {fileID: 604585139554710632}
   enemyPos: {fileID: 604585140051350262}
-  enemyPrefab: {fileID: 195941461420857089, guid: cee56b239ddde25498b25005a2e704b4, type: 3}
+  enemyPrefabs:
+  - {fileID: 195941461420857089, guid: cee56b239ddde25498b25005a2e704b4, type: 3}
 --- !u!1 &604585139554710639
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 604585140051350261}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.345, y: -0.275, z: 0}
+  m_LocalPosition: {x: 0.318, y: -0.188, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
