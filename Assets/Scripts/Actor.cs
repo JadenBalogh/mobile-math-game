@@ -17,7 +17,7 @@ public abstract class Actor : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
-    public void Explode()
+    public virtual void Explode()
     {
         foreach (Rigidbody2D bodyPart in bodyParts)
         {

@@ -155,6 +155,10 @@ MonoBehaviour:
   enemyPos: {fileID: 604585140051350262}
   enemyPrefabs:
   - {fileID: 195941461420857089, guid: cee56b239ddde25498b25005a2e704b4, type: 3}
+  minibossPrefab: {fileID: 195941461420857089, guid: cc87c7af71edc1d4dbaf4e7377648593, type: 3}
+  bossPrefab: {fileID: 195941461420857089, guid: 247ba7293f7ed1e49b0eff7d0ea2d8b7, type: 3}
+  bossOffsetY: 0.1
+  combatDelay: 0.5
 --- !u!1 &604585139554710639
 GameObject:
   m_ObjectHideFlags: 0

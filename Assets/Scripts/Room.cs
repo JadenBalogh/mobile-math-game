@@ -10,11 +10,15 @@ public class Room : MonoBehaviour
     [SerializeField] private Transform playerPos;
     [SerializeField] private Transform enemyPos;
     [SerializeField] private Enemy[] enemyPrefabs;
+    [SerializeField] private Enemy minibossPrefab;
+    [SerializeField] private Enemy bossPrefab;
+    [SerializeField] private float bossOffsetY = 0.2f;
     [SerializeField] private float combatDelay = 0.5f;
 
     private bool PlayerArrived { get => (Player.Instance.transform.position - playerPos.transform.position).sqrMagnitude < 0.1f; }
 
-    public int StrengthMult { get; set; }
+    public float StrengthMult { get; set; }
+    public RoomType SpawnType { get; set; }
 
     private Enemy enemy = null;
     private bool isHovered = false;
@@ -29,13 +33,30 @@ public class Room : MonoBehaviour
 
     private void Start()
     {
-        Enemy enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-        enemy = Instantiate(enemyPrefab, enemyPos.position, Quaternion.identity);
-        enemy.Strength = enemy.Strength * StrengthMult;
+        if (SpawnType == RoomType.Boss)
+        {
+            enemy = Instantiate(bossPrefab, enemyPos.position + Vector3.up * bossOffsetY, Quaternion.identity);
+            enemy.Strength = (int)(enemy.Strength * StrengthMult);
+            enemy.EndsGame = true;
+        }
+        else if (SpawnType == RoomType.Miniboss)
+        {
+            enemy = Instantiate(minibossPrefab, enemyPos.position, Quaternion.identity);
+            enemy.Strength = (int)(enemy.Strength * StrengthMult);
+            enemy.SubtractStrength = true;
+        }
+        else
+        {
+            Enemy enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+            enemy = Instantiate(enemyPrefab, enemyPos.position, Quaternion.identity);
+            enemy.Strength = (int)(enemy.Strength * StrengthMult);
+        }
     }
 
     private void Update()
     {
+        if (Player.Instance.IsDead) return;
+
         if (explored) return;
 
         if (PlayerArrived && !explored)
@@ -72,6 +93,8 @@ public class Room : MonoBehaviour
 
     private void OnMouseDown()
     {
+        if (Player.Instance.IsDead) return;
+
         if (!IsUsable()) return;
 
         Player.Instance.Target = playerPos;
@@ -91,5 +114,12 @@ public class Room : MonoBehaviour
         bool isPast = xDist >= -0.1f;
 
         return !roomHasPlayer && roomHasEnemy && inRange && !isPast && !player.IsMoving();
+    }
+
+    public enum RoomType
+    {
+        Normal,
+        Miniboss,
+        Boss
     }
 }

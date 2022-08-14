@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 9114780966510034201}
   - component: {fileID: 195941461420857089}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Miniboss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -311,7 +311,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 959e24830e31a2842b68a0092cd40e00, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f684ea312936ee4db0602689ef8a027, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -335,16 +335,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bodyParts:
-  - {fileID: 1162867838429738142, guid: a8f4b8d92be824c44a0d6a987a10a8ea, type: 3}
-  - {fileID: 5452453722726755967, guid: ca2ac17c305001f4f8ff406f2728521b, type: 3}
-  - {fileID: 5538167907755677539, guid: 02ff0c087aeca404b9a6770f256d266d, type: 3}
-  - {fileID: 2541447396360838820, guid: fafb3c8cf4a478d4587e22b8f84d0dd4, type: 3}
-  - {fileID: 269889169413350977, guid: 804a057d991bed84e858fb3a550eba13, type: 3}
-  - {fileID: 8394742961141120260, guid: 2c970e78cc34076468342c73307c9682, type: 3}
-  - {fileID: 8516744648702663828, guid: 852d33b05bafdf84eab429967e410ab6, type: 3}
+  - {fileID: 1162867838429738142, guid: bd727716b10b52e498c12bf130b27dd0, type: 3}
+  - {fileID: 5452453722726755967, guid: d65abfa7f6d98c24fa16155c1a08c489, type: 3}
+  - {fileID: 5538167907755677539, guid: 084c09cd775c593409afc4e364aa2afb, type: 3}
+  - {fileID: 2541447396360838820, guid: ddfe2c565c2c7e246846f045e91b8398, type: 3}
+  - {fileID: 269889169413350977, guid: a17ef3c4ef7956f4fbb1967208ef5a58, type: 3}
+  - {fileID: 8394742961141120260, guid: f92054f373aa66c49b37cf65b8d183f6, type: 3}
+  - {fileID: 8516744648702663828, guid: 689174748268be341afaaef577008336, type: 3}
   minExplodeForce: 5
   maxExplodeForce: 12
   minExplodeTorque: 3
   maxExplodeTorque: 6
-  strength: 3
+  strength: 8
   textbox: {fileID: 1670824679}

@@ -21,6 +21,7 @@ public class Player : Actor
 
     public Transform Target { get; set; }
     public int CurrentStrength { get; set; }
+    public bool IsDead { get; private set; }
 
     private Vector2 currVelocity;
 
@@ -56,12 +57,21 @@ public class Player : Actor
         {
             enemy.Explode();
             Destroy(enemy.gameObject);
-            CurrentStrength += enemy.Strength;
+            CurrentStrength += enemy.SubtractStrength ? -enemy.Strength : enemy.Strength;
             textbox.text = CurrentStrength.ToString();
         }
         else
         {
             Explode();
         }
+    }
+
+    public override void Explode()
+    {
+        base.Explode();
+
+        IsDead = true;
+
+        HUD.OnDied();
     }
 }
